@@ -5,13 +5,13 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>e5fb2293-1833-4c4c-800e-a31ac891a931</ProjectGuid>
+    <ProjectGuid>e5fb2293-3055-4c4c-800e-a31ac891a931</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>R4nd0mApps.TddStud10.Common.Domain</RootNamespace>
-    <AssemblyName>R4nd0mApps.TddStud10.Common.Domain</AssemblyName>
+    <RootNamespace>R4nd0mApps.TddStud10.Logger</RootNamespace>
+    <AssemblyName>R4nd0mApps.TddStud10.Logger</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
-    <Name>R4nd0mApps.TddStud10.Common.Domain</Name>
+    <Name>R4nd0mApps.TddStud10.Logger</Name>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
@@ -55,17 +55,9 @@
     <Compile Include="..\Constants.fs">
       <Link>Constants.fs</Link>
     </Compile>
-    <Compile Include="Domain.fs" />
-    <Compile Include="DataStoreEntityBase.fs" />
-    <Compile Include="PerDocumentLocationTestCases.fs" />
-    <Compile Include="PerDocumentSequencePoints.fs" />
-    <Compile Include="PerTestIdResults.fs" />
-    <Compile Include="PerDocumentLocationTestFailureInfo.fs" />
-    <Compile Include="PerSequencePointIdTestRunId.fs" />
-    <Compile Include="RunDomain.fs" />
-    <Compile Include="IDataStore.fs" />
-    <Compile Include="Code\PathBuilder.fs" />
-    <Compile Include="Code\CollectionExtensions.fs" />
+    <Compile Include="ILogger.fs" />
+    <Compile Include="NullLogger.fs" />
+    <Compile Include="LoggerFactory.fs" />
     <Content Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
