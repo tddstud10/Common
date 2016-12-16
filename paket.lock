@@ -3,6 +3,7 @@ NUGET
     FAKE (4.46.1)
     FSharp.Core (3.1.2.5) - framework: >= net45
     GitVersion.CommandLine (4.0.0-beta0009)
+    NuGet.CommandLine (3.4.3)
     xunit (2.1) - framework: >= net45
       xunit.assert (2.1)
       xunit.core (2.1)

@@ -11,6 +11,8 @@ MSBuildDefaults <- { MSBuildDefaults with Verbosity = Some MSBuildVerbosity.Mini
 // Directories
 let buildDir  = @"./build/"
 let testDir  = @"./build/"
+let nugetDir = @"./NuGet/"
+ensureDirExists (directoryInfo nugetDir)
 
 // Filesets
 let solutionFile = "Common.sln"
@@ -46,8 +48,26 @@ let runTest pattern =
 Target "Test" DoNothing
 Target "UnitTests" (runTest "/*.UnitTests*.dll")
 
+Target "Package" (fun _ ->
+    let buildDirRel = sprintf @"..\build\%s"
+
+    "Common.nuspec"
+    |> NuGet (fun p -> 
+        { p with               
+            Authors = [ "The TddStud10 Team" ]
+            Project = "TddStud10.Common"
+            Description = "TddStud10 Common"
+            Version = EnvironmentHelper.environVarOrDefault "GitVersion_NuGetVersion" "0.0.0"
+            Dependencies = [ "FSharp.Core", GetPackageVersion "./packages/" "FSharp.Core" ]
+            Files = [ buildDirRel "R4nd0mApps.TddStud10.Common.Domain.dll", Some "lib", None
+                      buildDirRel "R4nd0mApps.TddStud10.Common.Domain.pdb", Some "lib", None
+                      buildDirRel "R4nd0mApps.TddStud10.Logger.dll", Some "lib", None
+                      buildDirRel "R4nd0mApps.TddStud10.Logger.pdb", Some "lib", None ]
+            OutputPath = buildDir })
+)
+
 Target "Publish" (fun _ ->
-    !! "build\*.nupkg"
+    !! "build/*.nupkg"
     |> AppVeyor.PushArtifacts
 )
 
@@ -56,7 +76,7 @@ Target "Publish" (fun _ ->
 "Build" ==> "Rebuild" 
 "Build" ?=> "UnitTests" ==> "Test"
 "Rebuild" ==> "Test"
-"Test" ==> "Publish"
+"Test" ==> "Package" ==> "Publish"
 
 // start build
 RunTargetOrDefault "Test"
