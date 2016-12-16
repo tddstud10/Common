@@ -1,9 +1,21 @@
-version: 1.0.{build}
+install:
+  - choco install gitversion.portable -pre -y
+
+assembly_info:
+  patch: false
+
+before_build:
+  - ps: gitversion /l console /output buildserver /updateAssemblyInfo
+  - cmd: .\build.cmd
 
 build_script:
-- cmd: .\build.cmd
 
 test: off
+
+after_build:
+  - cmd: ECHO nuget pack Common.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
+  - cmd: nuget pack Common.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
+  - cmd: appveyor PushArtifact "Common.%GitVersion_NuGetVersion%.nupkg"
 
 #
 #on_finish:

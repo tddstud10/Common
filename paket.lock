@@ -2,7 +2,7 @@ NUGET
   remote: https://www.nuget.org/api/v2
     FAKE (4.46.1)
     FSharp.Core (3.1.2.5) - framework: >= net45
-    GitVersion (3.6.5)
+    GitVersion.CommandLine (4.0.0-beta0009)
     xunit (2.1) - framework: >= net45
       xunit.assert (2.1)
       xunit.core (2.1)
