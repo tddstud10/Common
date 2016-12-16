@@ -18,20 +18,25 @@ ensureDirExists (directoryInfo nugetDir)
 // Filesets
 let solutionFile = "Common.sln"
 
+let msbuildProps = [
+    "Configuration", "Debug"
+    "Platform", "Any CPU"
+]
+
 // Targets
 Target "Clean" (fun _ ->
     CleanDirs [buildDir]
+
+    !! solutionFile
+    |> MSBuild buildDir "Clean" msbuildProps
+    |> ignore
 )
 
 Target "Rebuild" DoNothing
 
 Target "Build" (fun _ ->
     !! solutionFile
-    |> MSBuild buildDir "Build"
-         [
-            "Configuration", "Debug"
-            "Platform", "Any CPU"
-         ]
+    |> MSBuild buildDir "Build" msbuildProps
     |> ignore
 )
 
