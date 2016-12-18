@@ -15,10 +15,6 @@
     <copyright>Partho P. Das 2016-3016</copyright>    
     <tags>TddStud10 TDD Unit Test</tags>
     @dependencies@
-    <contentFiles>
-      <files include="..\build\R4nd0mApps.TddStud10.Common.Domain.pdb" buildAction="None" copyToOutput="true" flatten="true" /> 
-      <files include="..\build\R4nd0mApps.TddStud10.Logger.pdb" buildAction="None" copyToOutput="true" flatten="true" /> 
-    </contentFiles>
     <references>
       <reference file="R4nd0mApps.TddStud10.Common.Domain.dll" />
       <reference file="R4nd0mApps.TddStud10.Logger.dll" />
@@ -26,6 +22,8 @@
   </metadata>
   <files>
     <file src="..\build\R4nd0mApps.TddStud10.Common.Domain.dll" target="lib" /> 
+    <file src="..\build\R4nd0mApps.TddStud10.Common.Domain.pdb" target="lib" /> 
     <file src="..\build\R4nd0mApps.TddStud10.Logger.dll" target="lib" /> 
+    <file src="..\build\R4nd0mApps.TddStud10.Logger.pdb" target="lib" /> 
   </files>
 </package>
