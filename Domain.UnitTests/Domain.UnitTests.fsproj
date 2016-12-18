@@ -64,8 +64,9 @@
     <Compile Include="..\AssemblyInfo.fs">
       <Link>AssemblyInfo.fs</Link>
     </Compile>
-    <Compile Include="FilePathTests.fs" />
     <Content Include="paket.references" />
+    <Compile Include="FilePathTests.fs" />
+    <Compile Include="PathBuilderTests.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

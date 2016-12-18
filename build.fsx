@@ -9,10 +9,10 @@ open System.IO
 MSBuildDefaults <- { MSBuildDefaults with Verbosity = Some MSBuildVerbosity.Minimal }
 
 // Directories
-let packagesDir = "./packages/"
-let buildDir  = @"./build/"
-let testDir  = @"./build/"
-let nugetDir = @"./NuGet/"
+let packagesDir = __SOURCE_DIRECTORY__ @@ "packages"
+let buildDir  = __SOURCE_DIRECTORY__ @@ @"build"
+let testDir  = __SOURCE_DIRECTORY__ @@ @"build"
+let nugetDir = __SOURCE_DIRECTORY__ @@ @"NuGet"
 ensureDirExists (directoryInfo nugetDir)
 
 // Filesets
@@ -70,20 +70,14 @@ Target "Test" DoNothing
 Target "UnitTests" (runTest "/*.UnitTests*.dll")
 
 Target "Package" (fun _ ->
-    let buildDirRel = sprintf @"..\build\%s"
-
     "Common.nuspec"
     |> NuGet (fun p -> 
         { p with               
             Authors = [ "The TddStud10 Team" ]
             Project = "TddStud10.Common"
             Description = "TddStud10 Common"
-            Version = EnvironmentHelper.environVarOrDefault "GitVersion_NuGetVersion" "0.0.0"
+            Version = EnvironmentHelper.environVarOrDefault "GitVersion_NuGetVersion" "0.0.0-alpha00"
             Dependencies = [ "FSharp.Core", GetPackageVersion packagesDir "FSharp.Core" ]
-            Files = [ buildDirRel "R4nd0mApps.TddStud10.Common.Domain.dll", Some "lib", None
-                      buildDirRel "R4nd0mApps.TddStud10.Common.Domain.pdb", Some "lib", None
-                      buildDirRel "R4nd0mApps.TddStud10.Logger.dll", Some "lib", None
-                      buildDirRel "R4nd0mApps.TddStud10.Logger.pdb", Some "lib", None ]
             OutputPath = buildDir })
 )
 

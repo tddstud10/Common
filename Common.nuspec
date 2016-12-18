@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">    
-  <id>@project@</id>
-  <version>@build.number@</version>
-  <authors>@authors@</authors>
-  <owners>@authors@</owners>
-  <summary>@summary@</summary>
-  <licenseUrl>https://github.com/parthopdas/tddstud10/blob/master/LICENSE</licenseUrl>
-  <projectUrl>https://github.com/parthopdas/tddstud10</projectUrl>
-  <iconUrl>https://github.com/parthopdas/tddstud10/icon.png</iconUrl>
-  <requireLicenseAcceptance>false</requireLicenseAcceptance>
-  <description>@description@</description>
-  <releaseNotes>@releaseNotes@</releaseNotes>
-  <copyright>Partho P. Das 2016-3016</copyright>    
-  <tags>TddStud10 TDD Unit Test</tags>
-  @dependencies@
+    <id>@project@</id>
+    <version>@build.number@</version>
+    <authors>@authors@</authors>
+    <owners>@authors@</owners>
+    <summary>@summary@</summary>
+    <licenseUrl>https://github.com/parthopdas/tddstud10/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/parthopdas/tddstud10</projectUrl>
+    <iconUrl>https://github.com/parthopdas/tddstud10/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>@description@</description>
+    <releaseNotes>@releaseNotes@</releaseNotes>
+    <copyright>Partho P. Das 2016-3016</copyright>    
+    <tags>TddStud10 TDD Unit Test</tags>
+    @dependencies@
+    <contentFiles>
+      <files include="..\build\R4nd0mApps.TddStud10.Common.Domain.pdb" buildAction="None" copyToOutput="true" flatten="true" /> 
+      <files include="..\build\R4nd0mApps.TddStud10.Logger.pdb" buildAction="None" copyToOutput="true" flatten="true" /> 
+    </contentFiles>
+    <references>
+      <reference file="R4nd0mApps.TddStud10.Common.Domain.dll" />
+      <reference file="R4nd0mApps.TddStud10.Logger.dll" />
+    </references>  
   </metadata>
-  @files@
+  <files>
+    <file src="..\build\R4nd0mApps.TddStud10.Common.Domain.dll" target="lib" /> 
+    <file src="..\build\R4nd0mApps.TddStud10.Logger.dll" target="lib" /> 
+  </files>
 </package>
