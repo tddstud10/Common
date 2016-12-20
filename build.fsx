@@ -8,6 +8,8 @@ open System.IO
 
 MSBuildDefaults <- { MSBuildDefaults with Verbosity = Some MSBuildVerbosity.Minimal }
 
+let ifMSCLR f = if ("Mono.Runtime" |> Type.GetType |> isNull) then f else ignore
+
 // Directories
 let packagesDir = __SOURCE_DIRECTORY__ @@ "packages"
 let buildDir  = __SOURCE_DIRECTORY__ @@ @"build"
@@ -40,7 +42,7 @@ Target "Build" (fun _ ->
     |> ignore
 )
 
-Target "GitLink" (fun _ ->
+Target "GitLink" (ifMSCLR <| fun _ ->
     let gitLink = (packagesDir @@ @"gitlink" @@ "lib" @@ "net45" @@ "GitLink.exe")
     let args = sprintf "%s -f %s -d %s" __SOURCE_DIRECTORY__ solutionFile buildDir
     let ret =
@@ -69,7 +71,7 @@ let runTest pattern =
 Target "Test" DoNothing
 Target "UnitTests" (runTest "/*.UnitTests*.dll")
 
-Target "Package" (fun _ ->
+Target "Package" (ifMSCLR <| fun _ ->
     "Common.nuspec"
     |> NuGet (fun p -> 
         { p with               
