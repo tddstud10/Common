@@ -1,5 +1,6 @@
 module R4nd0mApps.TddStud10.Logger.XFactory
 
+open R4nd0mApps.TddStud10.Common
 open System
 open System.IO
 open System.Reflection
@@ -12,7 +13,11 @@ let private getLocalPath() =
 
 let X<'T> typeName nullX : 'T = 
     let dir = () |> getLocalPath
-    let file = Assembly.GetExecutingAssembly().GetName().Name + ".Windows.dll"
+    
+    let file = 
+        sprintf "%s.Windows%s.dll" (Assembly.GetExecutingAssembly().GetName().Name) (if DFizer.isDF() then ".DF"
+                                                                                     else "")
+    
     let path = Path.Combine(dir, file)
     if File.Exists path then 
         Assembly.LoadFrom(path)
