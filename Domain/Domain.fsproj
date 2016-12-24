@@ -55,9 +55,6 @@
     <Compile Include="..\AssemblyInfo.fs">
       <Link>AssemblyInfo.fs</Link>
     </Compile>
-    <Compile Include="..\Constants.fs">
-      <Link>Constants.fs</Link>
-    </Compile>
     <Compile Include="Domain.fs" />
     <Compile Include="DataStoreEntityBase.fs" />
     <Compile Include="PerDocumentLocationTestCases.fs" />
@@ -69,6 +66,7 @@
     <Compile Include="IDataStore.fs" />
     <Compile Include="Code\PathBuilder.fs" />
     <Compile Include="Code\CollectionExtensions.fs" />
+    <Compile Include="Code\DFizer.fs" />
     <Content Include="paket.references" />
   </ItemGroup>
   <ItemGroup>

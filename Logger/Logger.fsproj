@@ -55,9 +55,6 @@
     <Compile Include="..\AssemblyInfo.fs">
       <Link>AssemblyInfo.fs</Link>
     </Compile>
-    <Compile Include="..\Constants.fs">
-      <Link>Constants.fs</Link>
-    </Compile>
     <Content Include="paket.references" />
     <Compile Include="XFactory.fs" />
     <Compile Include="ILogger.fs" />
