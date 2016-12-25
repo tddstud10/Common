@@ -15,8 +15,9 @@ let X<'T> typeName nullX : 'T =
     let dir = () |> getLocalPath
     
     let file = 
-        sprintf "%s.Windows%s.dll" (Assembly.GetExecutingAssembly().GetName().Name) (if DFizer.isDF() then ".DF"
-                                                                                     else "")
+        sprintf "%s.Windows%s.dll" 
+            (Assembly.GetExecutingAssembly().GetName().Name.Replace(".DF", "")) 
+            (if DFizer.isDF() then ".DF" else "")
     
     let path = Path.Combine(dir, file)
     if File.Exists path then 
