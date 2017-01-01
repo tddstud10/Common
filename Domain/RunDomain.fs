@@ -21,6 +21,7 @@ type SolutionPaths =
       SnapshotPath : FilePath
       BuildRoot : FilePath }
 
+[<CLIMutable>]
 type RunStartParams = 
     { SnapShotRoot : FilePath
       StartTime : DateTime
@@ -43,15 +44,18 @@ type RunStepResult =
 
 exception RunStepFailedException of RunStepResult
 
+[<CLIMutable>]
 type RunStepStartingEventArg = 
     { sp : RunStartParams
       info : RunStepInfo }
 
+[<CLIMutable>]
 type RunStepErrorEventArg = 
     { sp : RunStartParams
       info : RunStepInfo
       rsr : RunStepResult }
 
+[<CLIMutable>]
 type RunStepEndedEventArg = 
     { sp : RunStartParams
       info : RunStepInfo

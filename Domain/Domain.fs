@@ -8,8 +8,12 @@ open System.Runtime.Serialization
 
 [<CustomEquality; CustomComparison>]
 [<DebuggerDisplay("{ToString()}")>]
+[<KnownType("KnownTypes")>]
 type FilePath = 
     | FilePath of string
+    static member KnownTypes() = 
+        typeof<FilePath>.GetNestedTypes(BindingFlags.Public ||| BindingFlags.NonPublic) 
+        |> Array.filter FSharpType.IsUnion
     
     override x.ToString() = 
         match x with
@@ -130,6 +134,7 @@ type SequencePoint =
 // =================================================
 // NOTE: Adding any new cases will break RunStateTracker.
 // When we get rid of the B/T style notification icon, get rid of this.
+[<KnownType("KnownTypes")>]
 type RunStepKind = 
     | Build
     | Test
@@ -137,7 +142,11 @@ type RunStepKind =
         match t with
         | Build -> "Build"
         | Test -> "Test"
+    static member KnownTypes() = 
+        typeof<RunStepKind>.GetNestedTypes(BindingFlags.Public ||| BindingFlags.NonPublic) 
+        |> Array.filter FSharpType.IsUnion
 
+[<KnownType("KnownTypes")>]
 type RunStepSubKind = 
     | CreateSnapshot
     | DeleteBuildOutput
@@ -147,13 +156,21 @@ type RunStepSubKind =
     | DiscoverTests
     | InstrumentBinaries
     | RunTests
+    static member KnownTypes() = 
+        typeof<RunStepSubKind>.GetNestedTypes(BindingFlags.Public ||| BindingFlags.NonPublic) 
+        |> Array.filter FSharpType.IsUnion
 
+[<KnownType("KnownTypes")>]
 type RunStepName = 
     | RunStepName of string
     override t.ToString() = 
         match t with
         | RunStepName s -> s
+    static member KnownTypes() = 
+        typeof<RunStepName>.GetNestedTypes(BindingFlags.Public ||| BindingFlags.NonPublic) 
+        |> Array.filter FSharpType.IsUnion
 
+[<KnownType("KnownTypes")>]
 type RunStepStatus = 
     | Aborted
     | Succeeded
@@ -163,7 +180,11 @@ type RunStepStatus =
         | Aborted -> "Aborted"
         | Succeeded -> "Succeeded"
         | Failed -> "Failed"
+    static member KnownTypes() = 
+        typeof<RunStepStatus>.GetNestedTypes(BindingFlags.Public ||| BindingFlags.NonPublic) 
+        |> Array.filter FSharpType.IsUnion
 
+[<KnownType("KnownTypes")>]
 type RunStepStatusAddendum = 
     | FreeFormatData of string
     | ExceptionData of Exception
@@ -171,7 +192,11 @@ type RunStepStatusAddendum =
         match t with
         | FreeFormatData s -> s
         | ExceptionData e -> e.ToString()
+    static member KnownTypes() = 
+        typeof<RunStepStatusAddendum>.GetNestedTypes(BindingFlags.Public ||| BindingFlags.NonPublic) 
+        |> Array.filter FSharpType.IsUnion
 
+[<KnownType("KnownTypes")>]
 type RunState = 
     | Initial
     | EngineErrorDetected
@@ -185,14 +210,22 @@ type RunState =
     | BuildPassed
     | TestRunning
     | TestPassed
+    static member KnownTypes() = 
+        typeof<RunState>.GetNestedTypes(BindingFlags.Public ||| BindingFlags.NonPublic) 
+        |> Array.filter FSharpType.IsUnion
 
+[<KnownType("KnownTypes")>]
 type RunEvent = 
     | RunStarting
     | RunStepStarting of RunStepKind
     | RunStepError of RunStepKind * RunStepStatus
     | RunStepEnded of RunStepKind * RunStepStatus
     | RunError of Exception
+    static member KnownTypes() = 
+        typeof<RunEvent>.GetNestedTypes(BindingFlags.Public ||| BindingFlags.NonPublic) 
+        |> Array.filter FSharpType.IsUnion
 
+[<KnownType("KnownTypes")>]
 type HostVersion =
     | VS2013
     | VS2015
@@ -200,12 +233,16 @@ type HostVersion =
         match x with
         | VS2013 -> "12.0"
         | VS2015 -> "14.0"
+    static member KnownTypes() = 
+        typeof<HostVersion>.GetNestedTypes(BindingFlags.Public ||| BindingFlags.NonPublic) 
+        |> Array.filter FSharpType.IsUnion
 
 type public IRunExecutorHost = 
     abstract HostVersion : HostVersion
     abstract CanContinue : unit -> bool
     abstract RunStateChanged : RunState -> unit
 
+[<CLIMutable>]
 type DTestCase =
     { DtcId : Guid
       FullyQualifiedName : string
@@ -214,13 +251,18 @@ type DTestCase =
       CodeFilePath : FilePath
       LineNumber : DocumentCoordinate }
 
+[<KnownType("KnownTypes")>]
 type DTestOutcome =
     | TONone
     | TOPassed
     | TOFailed
     | TOSkipped
     | TONotFound
+    static member KnownTypes() = 
+        typeof<DTestOutcome>.GetNestedTypes(BindingFlags.Public ||| BindingFlags.NonPublic) 
+        |> Array.filter FSharpType.IsUnion
 
+[<CLIMutable>]
 type DTestResult =
     { DisplayName : string
       TestCase : DTestCase
