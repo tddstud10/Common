@@ -4,7 +4,7 @@ open System.IO
 open R4nd0mApps.TddStud10
 open R4nd0mApps.TddStud10.Common.Domain
 
-module PathBuilder = 
+module PathBuilder =
     let combine = 
         List.reduce (fun (FilePath acc) (FilePath e) -> Path.Combine(acc, e) |> FilePath)
 

@@ -20,7 +20,7 @@ let ``Test Data for - Tests for makeSlnSnapshotPath`` : obj array seq =
 
 [<Theory>]
 [<MemberData("Test Data for - Tests for makeSlnSnapshotPath")>]
-let ``Tests for makeSlnSnapshotPath`` (slnPath, snapShotPath) = 
+let ``Tests for makeSlnSnapshotPath`` (slnPath, snapShotPath) =
     let (FilePath sp) = PathBuilder.makeSlnSnapshotPath (FilePath <| D/"tddstud10") (FilePath slnPath)
     Assert.Equal(snapShotPath, sp)
 
@@ -30,6 +30,7 @@ let ``Test Data for - Tests for makeSlnBuildRoot`` : obj array seq =
     |> Seq.map (fun (a, b) -> [| box a; box b |])    
 
 [<Theory>]
+[<MemberData("Test Data for - Tests for makeSlnBuildRoot")>]
 let ``Tests for makeSlnBuildRoot`` (slnPath, buildRoot) = 
     let (FilePath sp) = PathBuilder.makeSlnBuildRoot (FilePath <| D/"xxx") (FilePath slnPath)
     Assert.Equal(buildRoot, sp)
