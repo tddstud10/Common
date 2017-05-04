@@ -51,6 +51,10 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
   <ItemGroup>
+    <Compile Include="..\paket-files\parthopdas\ccd06b223c0ae88ed9164f34cc1f5f06\YaFunTK.fs">
+      <Paket>True</Paket>
+      <Link>paket-files/YaFunTK.fs</Link>
+    </Compile>
     <Compile Include="..\AssemblyInfo.fs">
       <Link>AssemblyInfo.fs</Link>
     </Compile>

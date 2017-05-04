@@ -3,7 +3,8 @@
 open System
 open System.Collections.Generic
 open R4nd0mApps.TddStud10.Common.Domain
-open Xunit
+open global.Xunit
+open FsUnit.Xunit
 
 let inline (~~) s = FilePath s
 
@@ -16,7 +17,7 @@ let ``FilePath - HashCode tests`` s1 s2 same = Assert.Equal((~~s1).GetHashCode()
 [<Theory>]
 [<InlineData("abc", "abc")>]
 [<InlineData("aBc", "aBc")>]
-let ``FilePath - ToString tests`` s1 s2 = Assert.Equal<string>((~~s1).ToString(), s2)
+let ``FilePath - ToString tests`` s1 s2 = (~~s1).ToString() |> should equal s2
 
 let ``Equals Test Data`` = 
     [ ~~"abc", box ~~"abc", true

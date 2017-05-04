@@ -1,4 +1,7 @@
 FSharp.Core
-FsUnit.xUnit
-FsCheck.Xunit
-xunit.runner.console
+File:YaFunTK.fs
+
+group Test
+    FsUnit.xUnit
+    FsCheck.Xunit
+    xunit.runner.visualstudio

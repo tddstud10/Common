@@ -1,16 +1,21 @@
 source https://www.nuget.org/api/v2
 
-nuget FAKE
-nuget NuGet.CommandLine
-nuget GitVersion.CommandLine prerelease
-nuget GitLink
 nuget FSharp.Core 4.0.0.1 redirects: force
-nuget FSharpLint
-nuget FsCheck
-nuget FsCheck.Xunit
-nuget FsUnit.Xunit
-nuget xunit
-nuget xunit.runner.console
-nuget xunit.runner.visualstudio
 
 gist parthopdas/ccd06b223c0ae88ed9164f34cc1f5f06 YaFunTK.fs
+
+group Build
+    source "http://nuget.org/api/v2"
+    nuget FAKE
+    nuget NuGet.CommandLine
+    nuget GitVersion.CommandLine prerelease
+    nuget GitLink
+    nuget FSharpLint
+
+group Test
+    source "http://nuget.org/api/v2"
+    nuget FSharp.Core 4.0.0.1 redirects: force
+    nuget FsCheck.Xunit
+    nuget FsUnit.Xunit 1.4.1
+    nuget xunit.runner.console
+    nuget xunit.runner.visualstudio
