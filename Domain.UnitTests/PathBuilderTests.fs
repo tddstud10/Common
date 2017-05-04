@@ -5,7 +5,7 @@ open Xunit
 open System
 open R4nd0mApps.TddStud10.Common
 
-let IsMSCLR = ("Mono.Runtime" |> Type.GetType = null);
+let IsMSCLR = ("Mono.Runtime" |> Type.GetType |> isNull);
 
 let inline (~~) s = FilePath s
 let (/) a b = System.IO.Path.Combine(a,b)
@@ -22,7 +22,7 @@ let ``Test Data for - Tests for makeSlnSnapshotPath`` : obj array seq =
 [<MemberData("Test Data for - Tests for makeSlnSnapshotPath")>]
 let ``Tests for makeSlnSnapshotPath`` (slnPath, snapShotPath) =
     let (FilePath sp) = PathBuilder.makeSlnSnapshotPath (FilePath <| D/"tddstud10") (FilePath slnPath)
-    Assert.Equal(snapShotPath, sp)
+    Assert.Equal<string>(snapShotPath, sp)
 
 let ``Test Data for - Tests for makeSlnBuildRoot`` : obj array seq = 
     [ C/"folder"/"file.sln", D/"xxx"/"folder"/"out"
@@ -33,7 +33,7 @@ let ``Test Data for - Tests for makeSlnBuildRoot`` : obj array seq =
 [<MemberData("Test Data for - Tests for makeSlnBuildRoot")>]
 let ``Tests for makeSlnBuildRoot`` (slnPath, buildRoot) = 
     let (FilePath sp) = PathBuilder.makeSlnBuildRoot (FilePath <| D/"xxx") (FilePath slnPath)
-    Assert.Equal(buildRoot, sp)
+    Assert.Equal<string>(buildRoot, sp)
 
 let ``Test Data for - Tests for rebaseCodeFilePath`` : obj array seq = 
     [ C/"sln"/"sln.sln", D/"tddstud10"/"sln"/"sln.sln", D/"tddstud10"/"sln"/"proj"/"a.cpp", C/"sln"/"proj"/"a.cpp"

@@ -1,7 +1,6 @@
 ﻿module R4nd0mApps.TddStud10.Common.Domain.FilePathTests
 
 open System
-open System.Collections
 open System.Collections.Generic
 open R4nd0mApps.TddStud10.Common.Domain
 open Xunit
@@ -17,7 +16,7 @@ let ``FilePath - HashCode tests`` s1 s2 same = Assert.Equal((~~s1).GetHashCode()
 [<Theory>]
 [<InlineData("abc", "abc")>]
 [<InlineData("aBc", "aBc")>]
-let ``FilePath - ToString tests`` s1 s2 = Assert.Equal((~~s1).ToString(), s2)
+let ``FilePath - ToString tests`` s1 s2 = Assert.Equal<string>((~~s1).ToString(), s2)
 
 let ``Equals Test Data`` = 
     [ ~~"abc", box ~~"abc", true
