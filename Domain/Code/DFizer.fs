@@ -4,3 +4,5 @@ open System
 open System.Reflection
 
 let isDF() = Assembly.GetExecutingAssembly().GetName().Name.EndsWith(".DF", StringComparison.Ordinal)
+
+let dfize s = sprintf "%s%s" s (if isDF() then ".DF" else "")
