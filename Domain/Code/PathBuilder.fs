@@ -1,24 +1,9 @@
 ﻿namespace R4nd0mApps.TddStud10.Common
 
 open System.IO
-open R4nd0mApps.TddStud10
 open R4nd0mApps.TddStud10.Common.Domain
 
 module PathBuilder =
-    let combine = 
-        List.reduce (fun (FilePath acc) (FilePath e) -> Path.Combine(acc, e) |> FilePath)
-
-    let getFileName (FilePath p) =
-        Path.GetFileName(p) |> FilePath
-    
-    let enumerateFiles so filter (FilePath path) =
-        Directory.EnumerateFiles(path, filter, so)
-        |> Seq.map FilePath
-
-    let fileExists (FilePath p) = File.Exists(p)
-
-    let directoryExists (FilePath p) = Directory.Exists(p)
-
     let private makeSlnParentDirName slnPath = 
         match Path.GetFileName(Path.GetDirectoryName(slnPath)) with
         | "" -> Path.GetFileNameWithoutExtension(slnPath)

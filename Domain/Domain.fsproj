@@ -66,9 +66,12 @@
     <Compile Include="PerTestIdResults.fs" />
     <Compile Include="PerDocumentLocationTestFailureInfo.fs" />
     <Compile Include="PerSequencePointIdTestRunId.fs" />
+    <Compile Include="Code\SafeExec.fs" />
     <Compile Include="Code\PathBuilder.fs" />
     <Compile Include="Code\CollectionExtensions.fs" />
     <Compile Include="Code\DFizer.fs" />
+    <Compile Include="Code\ServiceHost.fs" />
+    <Compile Include="Code\ServiceDiscovery.fs" />
     <Content Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +80,13 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.fsproj">
+      <Name>Logger</Name>
+      <Project>{e5fb2293-3055-4c4c-800e-a31ac891a931}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

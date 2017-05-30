@@ -69,7 +69,6 @@ module FilePath =
         |> FilePath
     
     let getPathWithoutRoot (FilePath p) = p.Substring(Path.GetPathRoot(p).Length) |> FilePath
-    let combine (FilePath p1) (FilePath p2) = Path.Combine(p1, p2) |> FilePath
     let createDirectory (FilePath p) = p |> Directory.CreateDirectory
     let writeAllText text (FilePath p) = (p, text) |> File.WriteAllText
     let readAllText (FilePath p) = p |> File.ReadAllText
@@ -88,3 +87,11 @@ module FilePath =
         |> FilePath
     
     let getExtension (FilePath path) = Path.GetExtension(path)
+    
+    let combine : FilePath list -> _ = 
+        List.map Prelude.toStr
+        >> Path.combine
+        >> FilePath
+    
+    let fileExists (FilePath p) = p |> File.Exists
+    let directoryExists (FilePath p) = p |> Directory.Exists

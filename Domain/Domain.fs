@@ -102,16 +102,6 @@ type DTestCase =
       CodeFilePath : FilePath
       LineNumber : DocumentCoordinate }
 
-[<CLIMutable>]
-type DTestCase2 =
-    { TestCase : string
-      DtcId : Guid
-      FullyQualifiedName : string
-      DisplayName : string
-      Source : FilePath
-      CodeFilePath : FilePath
-      LineNumber : DocumentCoordinate }
-
 [<KnownType("KnownTypes")>]
 type DTestOutcome =
     | TONone
