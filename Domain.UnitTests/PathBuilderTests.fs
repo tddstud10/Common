@@ -5,7 +5,7 @@ open Xunit
 open System
 open R4nd0mApps.TddStud10.Common
 
-let IsMSCLR = ("Mono.Runtime" |> Type.GetType |> isNull);
+let IsMSCLR = "Mono.Runtime" |> Type.GetType |> isNull
 
 let inline (~~) s = FilePath s
 let (/) a b = System.IO.Path.Combine(a,b)

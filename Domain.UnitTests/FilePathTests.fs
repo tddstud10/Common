@@ -74,5 +74,5 @@ let ``FilePath - Map insert and retrieve``() =
 [<InlineData(@"c:\a\", @"c:\a\b.txt", @"b.txt")>]
 [<InlineData(@"c:\a", @"c:\a\c\b.txt", @"c\b.txt")>]
 [<InlineData(@"c:\a\b\", @"c:\a\c\b.txt", @"..\c\b.txt")>]
-let ``makeRelativePath tests`` folder abs rel =
-    FilePath.makeRelativePath (FilePath folder) (FilePath abs) |> should equal (FilePath rel)
+let ``makeRelativePath tests`` folder abs (rel : string) =
+    FilePath.makeRelativePath (FilePath folder) (FilePath abs) |> should equal (FilePath <| rel.Replace('\\', System.IO.Path.DirectorySeparatorChar))
