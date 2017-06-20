@@ -58,6 +58,7 @@
     <Compile Include="..\AssemblyInfo.fs">
       <Link>AssemblyInfo.fs</Link>
     </Compile>
+    <Compile Include="DomainTypeConverter.fs" />
     <Compile Include="FilePath.fs" />
     <Compile Include="Domain.fs" />
     <Compile Include="DataStoreEntityBase.fs" />

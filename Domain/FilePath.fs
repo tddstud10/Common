@@ -6,10 +6,12 @@ open System.Diagnostics
 open System.IO
 open System.Reflection
 open System.Runtime.Serialization
+open System.ComponentModel
 
 [<CustomEquality; CustomComparison>]
 [<DebuggerDisplay("{ToString()}")>]
 [<KnownType("KnownTypes")>]
+[<TypeConverter(typeof<FilePathConverter>)>]
 type FilePath = 
     | FilePath of string
     static member KnownTypes() = 
@@ -44,6 +46,10 @@ type FilePath =
     
     interface IEquatable<FilePath> with
         member x.Equals(y : FilePath) : bool = x.Equals(y)
+
+and FilePathConverter() = 
+    inherit DomainTypeConverter<FilePath>(FilePath)
+
 
 [<RequireQualifiedAccess>]
 [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]

@@ -98,6 +98,7 @@
     </Compile>
     <Content Include="paket.references" />
     <Compile Include="FilePathTests.fs" />
+    <Compile Include="TypeConverterTests.fs" />
     <Compile Include="PathBuilderTests.fs" />
     <Content Include="App.config" />
   </ItemGroup>
