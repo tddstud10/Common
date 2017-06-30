@@ -79,7 +79,9 @@ Target "Package" (ifMSCLR <| fun _ ->
             Project = "TddStud10.Common"
             Description = "TddStud10 Common"
             Version = EnvironmentHelper.environVarOrDefault "GitVersion_NuGetVersion" "0.0.0-alpha00"
-            Dependencies = [ "FSharp.Core", GetPackageVersion (packagesDir @@ "..") "FSharp.Core" ]
+            Dependencies = [ "FSharp.Core", GetPackageVersion (packagesDir @@ "..") "FSharp.Core" 
+                             "Newtonsoft.Json", GetPackageVersion (packagesDir @@ "..") "Newtonsoft.Json" 
+                             "System.Reactive", GetPackageVersion (packagesDir @@ "..") "System.Reactive" ]
             OutputPath = buildDir })
 )
 

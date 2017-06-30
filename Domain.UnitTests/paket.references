@@ -1,5 +1,7 @@
-FSharp.Core
 File:YaFunTK.fs
+FSharp.Core
+Newtonsoft.Json
+System.Reactive
 
 group Test
     FsUnit.xUnit

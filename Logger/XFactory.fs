@@ -7,7 +7,7 @@ open System
 let X<'T> typeName nullX : 'T = 
     let isDF() = Assembly.GetExecutingAssembly().GetName().Name.EndsWith(".DF", StringComparison.Ordinal)
 
-    let dir = () |> Path.getLocalPath
+    let dir = () |> Path.getExecutingAssemblyPath
     
     let file = 
         sprintf "%s.Windows%s.dll" 

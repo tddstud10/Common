@@ -1,6 +1,8 @@
 source https://www.nuget.org/api/v2
 
 nuget FSharp.Core 4.0.0.1 redirects: force
+nuget Newtonsoft.Json 10.0.2 redirects: force 
+nuget System.Reactive 3.1.1
 
 gist parthopdas/ccd06b223c0ae88ed9164f34cc1f5f06 YaFunTK.fs
 
